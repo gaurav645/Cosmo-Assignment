@@ -6,8 +6,8 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-
-client = MongoClient("mongodb+srv://ramboon422:vZcM9srgFH5BvdXL@cluster0.4xqxalk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+uri = "mongodb+srv://ramboon422:vZcM9srgFH5BvdXL@cluster0.4xqxalk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+client = MongoClient(uri)
 db = client["library"]
 print("Connected to database")
 
@@ -24,6 +24,7 @@ class BookNotFoundError(Exception):
 def get_all_books():
     books = list(db["books"].find({}, {"_id": 0}))  
     return {"books": books}
+    
 
 @app.post("/books")
 def add_new_book(book_data: Book):

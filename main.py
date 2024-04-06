@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-uri ="mongodb+srv://ramboon422:vZcM9srgFH5BvdXL@cluster0.4xqxalk.mongodb.net/Cosmo?retryWrites=true&w=majority&appName=Cluster0"
+uri ="mongodb+srv://ramboon422:vZcM9srgFH5BvdXL@cluster0.4xqxalk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 client = MongoClient(uri)
 db = client["library"]
